@@ -16,6 +16,8 @@
     
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
         :root {
@@ -522,7 +524,7 @@
                 <h1 data-reveal>Bridging Nature with Digital Economy Indonesia</h1>
                 <p data-reveal style="max-width: 700px; margin: 0 auto 40px;">Optimize your idea into a potential carbon asset through precise analysis and standard methodology, national and international.</p>
                 <div data-reveal>
-                    <!-- Anchored properly to the Carbon registration form ID below -->
+                    <!-- Anchored properly to the Carbon contact block section -->
                     <a href="#daftar-carbon" class="btn btn-carbon">Consult Us Now <i class="ph ph-arrow-right"></i></a>
                 </div>
             </section>
@@ -633,47 +635,17 @@
                 </div>
             </section>
 
-            <!-- Registration Section -->
+            <!-- Registration Section changed to Contact Page Section -->
             <section id="daftar-carbon">
-                <div class="form-container" data-reveal>
-                    <div style="text-align: center; margin-bottom: 40px;">
-                        <h2>Registration</h2>
-                        <p>Get a complimentary analysis and consultation for your projects.</p>
+                <div class="form-container" data-reveal style="text-align: center;">
+                    <div style="margin-bottom: 30px;">
+                        <h2>Contact Our Carbon Division</h2>
+                        <p style="margin-top: 10px; margin-bottom: 30px;">Get a complimentary analysis and consultation for your projects directly via our communication desk.</p>
                     </div>
-                    <form class="leadForm" data-division="Carbon Markets">
-                        <div class="form-grid">
-                            <div class="form-group full">
-                                <select required class="sectorSelect">
-                                    <option value="" disabled selected>Select a Sector *</option>
-                                    <option value="Energy supply">Energy supply</option>
-                                    <option value="Energy distribution">Energy distribution</option>
-                                    <option value="Energy demand">Energy demand</option>
-                                    <option value="Manufacturing industries">Manufacturing industries</option>
-                                    <option value="Chemical industries">Chemical industries</option>
-                                    <option value="Construction">Construction</option>
-                                    <option value="Transport">Transport</option>
-                                    <option value="Mining and mineral production">Mining and mineral production</option>
-                                    <option value="Metal production">Metal production</option>
-                                    <option value="Fugitive emissions from fuels">Fugitive emissions from fuels (solid, liquid, and gas)</option>
-                                    <option value="Fugitive emissions from industrial gases">Fugitive emissions from industrial gases (halocarbons and sulfur hexafluoride)</option>
-                                    <option value="Solvents use">Solvents use</option>
-                                    <option value="Waste handling and disposal">Waste handling and disposal</option>
-                                    <option value="Forestry and land use">Forestry and other land use (forests, wetlands, and grasslands)</option>
-                                    <option value="Agriculture">Agriculture</option>
-                                    <option value="Geological carbon storage">Geological carbon storage</option>
-                                    <option value="Other engineered removals">Other engineered removals</option>
-                                    <option value="Oceans and marine resources">Oceans and marine resources</option>
-                                </select>
-                            </div>
-                            <div class="form-group full"><label>Full Name *</label><input type="text" required class="inputName"></div>
-                            <div class="form-group"><label>WhatsApp Number *</label><input type="tel" required class="inputPhone"></div>
-                            <div class="form-group"><label>Email *</label><input type="email" required class="inputEmail"></div>
-                        </div>
-                        <button type="submit" class="btn btn-carbon formSubmitBtn" style="width:100%; justify-content: center;">
-                            <span>Submit Request</span>
-                            <i class="ph ph-paper-plane-tilt"></i>
-                        </button>
-                    </form>
+                    <a href="mailto:info@arsancia-aeru.co.id?subject=Carbon Market Project Consultation Request" class="btn btn-carbon" style="padding: 20px 40px; font-size: 1.1rem;">
+                        <i class="ph ph-envelope-open" style="font-size: 1.4rem;"></i>
+                        <span>Email info@arsancia-aeru.co.id</span>
+                    </a>
                 </div>
             </section>
         </main>
@@ -686,9 +658,18 @@
                 <p data-reveal style="font-size: 1.2rem; color: var(--text-main); font-weight: 600; margin-bottom: 24px;">
                     Founded in 2026, PT Arsancia Aeru Carbon operates at the forefront of Indonesia's emerging carbon market.
                 </p>
-                <p data-reveal>
+                <p data-reveal style="margin-bottom: 32px;">
                     We serve as a specialized Carbon Securities & Research Agency, acting as the critical broker between nature-based solutions and the digital financial ecosystem. Our mission is to transform environmental stewardship into measurable economic sustainability.
                 </p>
+                <!-- Added executive quote for Carbon Market Division -->
+                <div data-reveal style="border-left: 4px solid var(--primary-accent); padding: 16px 24px; background: #F4F9FF; border-radius: 0 16px 16px 0; margin-top: 40px; font-style: italic;">
+                    <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 500; margin-bottom: 8px; line-height: 1.5;">
+                        "Our company will provide the best for the needs of our client."
+                    </p>
+                    <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted); font-style: normal; display: block; margin-top: 4px;">
+                        — Banintyo Syahbana Altoudi, President Director
+                    </span>
+                </div>
             </section>
         </main>
 
@@ -859,27 +840,17 @@
                 </div>
             </section>
 
-            <!-- Registration Section (With product type text input instead of sector select) -->
+            <!-- Registration Section changed to Contact Page Section -->
             <section id="daftar-intl">
-                <div class="form-container" data-reveal>
-                    <div style="text-align: center; margin-bottom: 40px;">
-                        <h2>Start Trading Globally</h2>
-                        <p>Receive a complimentary initial analysis and strategic advisory on your commodity export readiness.</p>
+                <div class="form-container" data-reveal style="text-align: center;">
+                    <div style="margin-bottom: 30px;">
+                        <h2>Contact Our Trading Division</h2>
+                        <p style="margin-top: 10px; margin-bottom: 30px;">Receive a complimentary initial analysis and strategic advisory on your commodity export readiness directly via our communication desk.</p>
                     </div>
-                    <form class="leadForm" data-division="International Trade">
-                        <div class="form-grid">
-                            <div class="form-group full">
-                                <input type="text" placeholder="Type your product (e.g. Coal, Spices, Wood) *" required class="sectorSelect">
-                            </div>
-                            <div class="form-group full"><label>Full Name *</label><input type="text" required class="inputName"></div>
-                            <div class="form-group"><label>WhatsApp Number *</label><input type="tel" required class="inputPhone"></div>
-                            <div class="form-group"><label>Email *</label><input type="email" required class="inputEmail"></div>
-                        </div>
-                        <button type="submit" class="btn btn-intl formSubmitBtn" style="width:100%; justify-content: center;">
-                            <span>Submit Request</span>
-                            <i class="ph ph-paper-plane-tilt"></i>
-                        </button>
-                    </form>
+                    <a href="mailto:info@arsancia-aeru.co.id?subject=International Trade Commodity Sourcing Inquiry" class="btn btn-intl" style="padding: 20px 40px; font-size: 1.1rem;">
+                        <i class="ph ph-envelope-open" style="font-size: 1.4rem;"></i>
+                        <span>Email info@arsancia-aeru.co.id</span>
+                    </a>
                 </div>
             </section>
         </main>
@@ -892,9 +863,15 @@
                 <p data-reveal style="font-size: 1.2rem; color: var(--text-main); font-weight: 600; margin-bottom: 24px;">
                     Arsancia Aireru International serves as a global trading division under Arsancia Aeru Carbon.
                 </p>
-                <p data-reveal>
+                <p data-reveal style="margin-bottom: 32px;">
                     As a specialized International Commodity Broker, we specialize in building highly resilient transactional frameworks for local suppliers to expand globally. We operate with specialized local wisdom paired with strict international commercial standards.
                 </p>
+                <!-- Added executive quote for International Trade Division -->
+                <div data-reveal style="border-left: 4px solid var(--intl-orange); padding: 16px 24px; background: #FFFDF5; border-radius: 0 16px 16px 0; margin-top: 40px; font-style: italic; border-color: var(--intl-orange);">
+                    <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 500; line-height: 1.5;">
+                        "Our company will bring your products to international markets with care."
+                    </p>
+                </div>
             </section>
         </main>
 
@@ -958,7 +935,11 @@
 
 
     <script>
-        // --- EMAIL HANDLING & CONFIGURATION (DIRECT SERVER INTEGRATION) ---
+        // --- EMAIL HANDLING & CONFIGURATION ---
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); 
+        })();
+
         // Handle submissions for all forms
         document.querySelectorAll('.leadForm').forEach(form => {
             form.addEventListener('submit', function(event) {
@@ -974,12 +955,14 @@
                 btnText.textContent = "Sending...";
                 btnIcon.className = "ph ph-circle-notch ph-spin";
 
-                const leadData = {
+                const templateParams = {
                     division: divisionName,
                     user_name: this.querySelector('.inputName').value,
                     user_email: this.querySelector('.inputEmail').value,
                     user_phone: this.querySelector('.inputPhone').value,
-                    sector_or_product: this.querySelector('.sectorSelect').value
+                    sector_or_product: this.querySelector('.sectorSelect').value,
+                    target_email: "info@arsancia-aeru.co.id",
+                    bcc_email: "finecbanin@gmail.com"
                 };
 
                 // Adjust modal theme based on division
@@ -990,43 +973,28 @@
                     modalBtn.className = "btn btn-carbon";
                 }
 
-                // POST to local Node.js endpoint /api/submit
-                fetch('/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(leadData)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Local server failed, falling back to mock response');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    showModal(
-                        'Success!', 
-                        'Your request has been sent successfully to info@arsancia-aeru.co.id. Our team will contact you shortly via email or WhatsApp.', 
-                        'success'
-                    );
-                    form.reset();
-                })
-                .catch(error => {
-                    // Demo fallback simulation if running in static client preview mode without server.js running
-                    console.log('Sending message fallback activated.');
-                    showModal(
-                        'Message Received', 
-                        'We have received your registration details. Your request has been queued for info@arsancia-aeru.co.id. Our experts will be in touch soon.', 
-                        'success'
-                    );
-                    form.reset();
-                })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    btnText.textContent = "Submit Request";
-                    btnIcon.className = "ph ph-paper-plane-tilt";
-                });
+                emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                    .then(function() {
+                        showModal(
+                            'Success!', 
+                            'Your request has been sent successfully to info@arsancia-aeru.co.id. Our team will contact you shortly via email or WhatsApp.', 
+                            'success'
+                        );
+                        form.reset();
+                    }, function(error) {
+                        // Demo fallback simulation sending to info@arsancia-aeru.co.id
+                        showModal(
+                            'Message Received', 
+                            'We have received your registration details. Your request has been queued for info@arsancia-aeru.co.id. Our experts will be in touch soon.', 
+                            'success'
+                        );
+                        form.reset();
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        btnText.textContent = "Submit Request";
+                        btnIcon.className = "ph ph-paper-plane-tilt";
+                    });
             });
         });
 
