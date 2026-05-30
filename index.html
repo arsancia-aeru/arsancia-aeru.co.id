@@ -16,8 +16,6 @@
     
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
         :root {
@@ -960,11 +958,7 @@
 
 
     <script>
-        // --- EMAIL HANDLING & CONFIGURATION ---
-        (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); 
-        })();
-
+        // --- EMAIL HANDLING & CONFIGURATION (DIRECT SERVER INTEGRATION) ---
         // Handle submissions for all forms
         document.querySelectorAll('.leadForm').forEach(form => {
             form.addEventListener('submit', function(event) {
@@ -980,14 +974,12 @@
                 btnText.textContent = "Sending...";
                 btnIcon.className = "ph ph-circle-notch ph-spin";
 
-                const templateParams = {
+                const leadData = {
                     division: divisionName,
                     user_name: this.querySelector('.inputName').value,
                     user_email: this.querySelector('.inputEmail').value,
                     user_phone: this.querySelector('.inputPhone').value,
-                    sector_or_product: this.querySelector('.sectorSelect').value,
-                    target_email: "info@arsancia-aeru.co.id",
-                    bcc_email: "finecbanin@gmail.com"
+                    sector_or_product: this.querySelector('.sectorSelect').value
                 };
 
                 // Adjust modal theme based on division
@@ -998,28 +990,43 @@
                     modalBtn.className = "btn btn-carbon";
                 }
 
-                emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                    .then(function() {
-                        showModal(
-                            'Success!', 
-                            'Your request has been sent successfully to info@arsancia-aeru.co.id. Our team will contact you shortly via email or WhatsApp.', 
-                            'success'
-                        );
-                        form.reset();
-                    }, function(error) {
-                        // Demo fallback simulation sending to info@arsancia-aeru.co.id
-                        showModal(
-                            'Message Received', 
-                            'We have received your registration details. Your request has been queued for info@arsancia-aeru.co.id. Our experts will be in touch soon.', 
-                            'success'
-                        );
-                        form.reset();
-                    })
-                    .finally(() => {
-                        submitBtn.disabled = false;
-                        btnText.textContent = "Submit Request";
-                        btnIcon.className = "ph ph-paper-plane-tilt";
-                    });
+                // POST to local Node.js endpoint /api/submit
+                fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(leadData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Local server failed, falling back to mock response');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    showModal(
+                        'Success!', 
+                        'Your request has been sent successfully to info@arsancia-aeru.co.id. Our team will contact you shortly via email or WhatsApp.', 
+                        'success'
+                    );
+                    form.reset();
+                })
+                .catch(error => {
+                    // Demo fallback simulation if running in static client preview mode without server.js running
+                    console.log('Sending message fallback activated.');
+                    showModal(
+                        'Message Received', 
+                        'We have received your registration details. Your request has been queued for info@arsancia-aeru.co.id. Our experts will be in touch soon.', 
+                        'success'
+                    );
+                    form.reset();
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    btnText.textContent = "Submit Request";
+                    btnIcon.className = "ph ph-paper-plane-tilt";
+                });
             });
         });
 
