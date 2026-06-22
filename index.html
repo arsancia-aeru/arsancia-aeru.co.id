@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arsancia Group - Bridging Nature and Commerce with the Global Stage</title>
+    <title>Arsancia Group - Bridging Nature, Trade, and Logistics Analytics</title>
     
     <!-- Favicon updated to 3_2.png -->
     <link rel="icon" type="image/png" href="3_2.png">
@@ -35,6 +35,13 @@
             --intl-purple: #9b5de5;
             --gradient-intl: linear-gradient(135deg, var(--intl-orange) 0%, var(--intl-yellow) 100%);
             
+            /* Logistics Forensic Palette (Teal/Crimson Accent) */
+            --logistics-teal: #20c997;
+            --logistics-darkteal: #117a65;
+            --logistics-crimson: #dc3545;
+            --logistics-bg-soft: #f4fbf9;
+            --gradient-logistics: linear-gradient(135deg, var(--logistics-teal) 0%, #a3e4d7 100%);
+
             /* Neutral Variables */
             --white: #FFFFFF;
             --bg-light: #F4F9FF;
@@ -60,7 +67,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px 24px;
+            padding: 60px 24px;
             position: relative;
             z-index: 1005;
         }
@@ -78,9 +85,9 @@
         }
         .portal-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            max-width: 1000px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
             width: 100%;
         }
         .portal-card {
@@ -88,7 +95,7 @@
             backdrop-filter: blur(12px);
             border: 1px solid var(--border-light);
             border-radius: 32px;
-            padding: 48px 32px;
+            padding: 40px 24px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -109,6 +116,7 @@
         }
         .card-carbon::after { background: var(--gradient-carbon); }
         .card-intl::after { background: var(--gradient-intl); }
+        .card-logistics::after { background: var(--gradient-logistics); }
         
         .portal-card:hover {
             transform: translateY(-8px);
@@ -118,24 +126,24 @@
         .portal-card:hover::after { opacity: 1; }
         
         .portal-logo-img {
-            height: 120px;
+            height: 110px;
             width: auto;
             object-fit: contain;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             transition: var(--transition);
         }
         .portal-card:hover .portal-logo-img {
             transform: scale(1.05);
         }
         .portal-card h2 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
             margin-bottom: 12px;
         }
         .portal-card p {
-            font-size: 0.95rem;
-            margin-bottom: 32px;
-            max-width: 340px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            max-width: 320px;
         }
 
         /* --- GLOBAL HEADER SYSTEM --- */
@@ -168,7 +176,7 @@
         .logo-img { width: 48px; height: 48px; object-fit: contain; }
         .logo-text-group { display: flex; flex-direction: column; line-height: 1.1; }
         
-        /* Carbon Header Text Styling */
+        /* Corporate Identity Header Styling variants */
         .carbon-logo-text { 
             font-weight: 800; 
             font-size: 1.1rem; 
@@ -177,11 +185,18 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.01em;
         }
-        /* International Header Text Styling */
         .intl-logo-text {
             font-weight: 800;
             font-size: 1.1rem;
             background: linear-gradient(135deg, var(--intl-orange) 0%, var(--intl-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.01em;
+        }
+        .logistics-logo-text {
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--logistics-teal) 0%, var(--logistics-darkteal) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.01em;
@@ -200,6 +215,7 @@
         }
         .nav-menu li a:hover, .nav-menu li a.active { color: var(--primary-accent); }
         .intl-theme-nav li a:hover, .intl-theme-nav li a.active { color: var(--intl-orange); }
+        .logistics-theme-nav li a:hover, .logistics-theme-nav li a.active { color: var(--logistics-teal); }
 
         .btn-switch {
             font-size: 0.8rem;
@@ -254,9 +270,10 @@
             color: var(--primary-accent);
             z-index: 1100;
         }
+        .menu-toggle.logistics-toggle { color: var(--logistics-teal); }
 
         /* --- WORKSPACES --- */
-        #carbon-workspace, #intl-workspace {
+        #carbon-workspace, #intl-workspace, #logistics-workspace {
             display: none;
         }
 
@@ -273,6 +290,9 @@
         .intl-hero {
             background: radial-gradient(circle at top right, #FFF8E1 0%, #FFFFFF 100%) !important;
         }
+        .logistics-hero {
+            background: radial-gradient(circle at top right, #E8F8F5 0%, #FFFFFF 100%) !important;
+        }
         .hero h1 { 
             font-size: clamp(2.2rem, 6vw, 3.8rem); 
             font-weight: 800; 
@@ -288,12 +308,26 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .logistics-hero h1 {
+            background: linear-gradient(135deg, #1A2B3C 30%, var(--logistics-darkteal) 100%) !important;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .eyebrow-intl {
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 700;
             color: var(--intl-orange);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .eyebrow-logistics {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--logistics-teal);
             margin-bottom: 12px;
             display: inline-block;
         }
@@ -309,6 +343,10 @@
         }
         .intl-compliance-section {
             background: #FFFDE7 !important;
+        }
+        .logistics-compliance-section {
+            background: #E8F8F5 !important;
+            border-color: #a3e4d7;
         }
         .compliance-section h2 { margin-bottom: 20px; }
         .compliance-text { max-width: 800px; margin: 0 auto; font-weight: 500; }
@@ -326,7 +364,6 @@
             cursor: pointer;
             border: none;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(135, 193, 255, 0.3);
         }
         .btn-carbon {
             background: var(--gradient-carbon);
@@ -340,6 +377,12 @@
         }
         .btn-intl:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 159, 67, 0.5); }
         
+        .btn-logistics {
+            background: var(--gradient-logistics);
+            box-shadow: 0 4px 15px rgba(32, 201, 151, 0.25);
+        }
+        .btn-logistics:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(32, 201, 151, 0.4); }
+
         .btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
         /* --- GRID --- */
@@ -370,14 +413,17 @@
             align-items: flex-start;
         }
         .intl-step-v { background: #FFFDF9 !important; }
+        .logistics-step-v { background: #F4FBF9 !important; }
         .step-v:hover { border-color: var(--logo-blue); background: #FFFFFF; transform: translateX(5px); }
         .intl-step-v:hover { border-color: var(--intl-orange) !important; }
+        .logistics-step-v:hover { border-color: var(--logistics-teal) !important; }
         .step-v-num { font-size: 1.5rem; font-weight: 900; color: var(--logo-blue); line-height: 1; }
         .intl-step-v-num { color: var(--intl-orange) !important; }
+        .logistics-step-v-num { color: var(--logistics-teal) !important; }
         .step-v-content h4 { font-size: 1rem; margin-bottom: 4px; }
         .step-v-content p { font-size: 0.85rem; }
 
-        /* --- FORM --- */
+        /* --- FORM / CALLOUT BOX --- */
         .form-container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 60px; border-radius: 32px; border: 1px solid var(--border-light); box-shadow: 0 40px 80px rgba(0,0,0,0.06); }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .form-group { margin-bottom: 24px; }
@@ -392,7 +438,6 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
         }
-        .form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231A2B3C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; }
 
         /* --- MODAL --- */
         .modal-overlay {
@@ -427,11 +472,16 @@
         .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-muted); text-decoration: none; }
         .contact-item i { color: var(--primary-accent); font-size: 1.2rem; }
         .intl-contact i { color: var(--intl-orange) !important; }
+        .logistics-contact i { color: var(--logistics-teal) !important; }
         .footer-bottom { border-top: 1px solid var(--border-light); margin-top: 60px; padding-top: 30px; text-align: center; }
 
         /* --- REVEAL ANIMATION --- */
         [data-reveal] { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
         [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1100px) {
+            .portal-grid { grid-template-columns: repeat(2, 1fr); }
+        }
 
         @media (max-width: 992px) {
             .process-container { grid-template-columns: 1fr; gap: 60px; }
@@ -475,6 +525,15 @@
                     <p>Arsancia Aireru International acts as a premium international commodity broker bridging local commodities to global stages.</p>
                 </div>
                 <button class="btn btn-intl">Enter Trading Division</button>
+            </div>
+            <!-- Card 3: Logistics Forensic Audit -->
+            <div class="portal-card card-logistics" onclick="enterDivision('logistics')">
+                <img src="airuo.png" alt="Arsancia Airuo Asensu Logistics" class="portal-logo-img">
+                <div>
+                    <h2>Logistics Forensic Audit</h2>
+                    <p>Arsancia Airuo Asensu Logistics protects supply chain financial structures through automation and comprehensive auditing fields.</p>
+                </div>
+                <button class="btn btn-logistics">Enter Forensic Audit Division</button>
             </div>
         </div>
     </div>
@@ -524,7 +583,6 @@
                 <h1 data-reveal>Bridging Nature with Digital Economy Indonesia</h1>
                 <p data-reveal style="max-width: 700px; margin: 0 auto 40px;">Optimize your idea into a potential carbon asset through precise analysis and standard methodology, national and international.</p>
                 <div data-reveal>
-                    <!-- Anchored properly to the Carbon contact block section -->
                     <a href="#daftar-carbon" class="btn btn-carbon">Consult Us Now <i class="ph ph-arrow-right"></i></a>
                 </div>
             </section>
@@ -549,85 +607,37 @@
 
             <section id="workflows-carbon">
                 <div class="process-container">
-                    <!-- Certification Process -->
                     <div class="process-column" data-reveal>
                         <h2>Certification Process</h2>
                         <p>Transparent steps towards issuing your emission certificate (SPE-GRK)</p>
                         <div class="stepper-v">
-                            <div class="step-v">
-                                <div class="step-v-num">01</div>
-                                <div class="step-v-content"><h4>Registration</h4><p>Registration of your project into the SRN-PPI database.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">02</div>
-                                <div class="step-v-content"><h4>DRAM Plan</h4><p>Develop Mitigation Action Plan Document (DRAM).</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">03</div>
-                                <div class="step-v-content"><h4>Validation</h4><p>Independent validators audit your documentation.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">04</div>
-                                <div class="step-v-content"><h4>Monitoring</h4><p>Actualize and monitor your Mitigation Action Plan.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">05</div>
-                                <div class="step-v-content"><h4>Achievement</h4><p>Report based on the validated DRAM (LCAM).</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">06</div>
-                                <div class="step-v-content"><h4>Verification</h4><p>Independent Verifier reviews your achievements.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">07</div>
-                                <div class="step-v-content"><h4>Issuing SPE-GRK</h4><p>Formal issuance of Emission Reduction Certificates.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">08</div>
-                                <div class="step-v-content"><h4>Commercialize</h4><p>Monetize your Carbon Asset via the Carbon Market.</p></div>
-                            </div>
+                            <div class="step-v"><div class="step-v-num">01</div><div class="step-v-content"><h4>Registration</h4><p>Registration of your project into the SRN-PPI database.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">02</div><div class="step-v-content"><h4>DRAM Plan</h4><p>Develop Mitigation Action Plan Document (DRAM).</p></div></div>
+                            <div class="step-v"><div class="step-v-num">03</div><div class="step-v-content"><h4>Validation</h4><p>Independent validators audit your documentation.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">04</div><div class="step-v-content"><h4>Monitoring</h4><p>Actualize and monitor your Mitigation Action Plan.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">05</div><div class="step-v-content"><h4>Achievement</h4><p>Report based on the validated DRAM (LCAM).</p></div></div>
+                            <div class="step-v"><div class="step-v-num">06</div><div class="step-v-content"><h4>Verification</h4><p>Independent Verifier reviews your achievements.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">07</div><div class="step-v-content"><h4>Issuing SPE-GRK</h4><p>Formal issuance of Emission Reduction Certificates.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">08</div><div class="step-v-content"><h4>Commercialize</h4><p>Monetize your Carbon Asset via the Carbon Market.</p></div></div>
                         </div>
                     </div>
 
-                    <!-- Compliance Process -->
                     <div class="process-column" data-reveal>
                         <h2>Compliance Process</h2>
                         <p>Managing your emission limits and industrial green standards (PTBAE-PU/SELASIH)</p>
                         <div class="stepper-v">
-                            <div class="step-v">
-                                <div class="step-v-num">01</div>
-                                <div class="step-v-content"><h4>Technical Setting</h4><p>Determination of emission limits (PTBAE-PU) based on industrial subsector.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">02</div>
-                                <div class="step-v-content"><h4>Emission Inventory</h4><p>Comprehensive data collection and calculation of actual GHG emissions.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">03</div>
-                                <div class="step-v-content"><h4>SELASIH Reporting</h4><p>Periodic input of emission and energy data into the SELASIH system.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">04</div>
-                                <div class="step-v-content"><h4>Gap Analysis</h4><p>Status determination of emission Surplus (Surplus) or Deficit (Deficit).</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">05</div>
-                                <div class="step-v-content"><h4>Verification</h4><p>Independent audit of emission reports and industrial documentation.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">06</div>
-                                <div class="step-v-content"><h4>Settlement & Trading</h4><p>Monetize surplus performance or settle deficit via carbon units.</p></div>
-                            </div>
-                            <div class="step-v">
-                                <div class="step-v-num">07</div>
-                                <div class="step-v-content"><h4>Green Industry Logo</h4><p>Synchronization for Green Industry Certification and corporate reputation.</p></div>
-                            </div>
+                            <div class="step-v"><div class="step-v-num">01</div><div class="step-v-content"><h4>Technical Setting</h4><p>Determination of emission limits (PTBAE-PU) based on industrial subsector.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">02</div><div class="step-v-content"><h4>Emission Inventory</h4><p>Comprehensive data collection and calculation of actual GHG emissions.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">03</div><div class="step-v-content"><h4>SELASIH Reporting</h4><p>Periodic input of emission and energy data into the SELASIH system.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">04</div><div class="step-v-content"><h4>Gap Analysis</h4><p>Status determination of emission Surplus (Surplus) or Deficit (Deficit).</p></div></div>
+                            <div class="step-v"><div class="step-v-num">05</div><div class="step-v-content"><h4>Verification</h4><p>Independent audit of emission reports and industrial documentation.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">06</div><div class="step-v-content"><h4>Settlement & Trading</h4><p>Monetize surplus performance or settle deficit via carbon units.</p></div></div>
+                            <div class="step-v"><div class="step-v-num">07</div><div class="step-v-content"><h4>Green Industry Logo</h4><p>Synchronization for Green Industry Certification and corporate reputation.</p></div></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Quality Standard Section -->
             <section id="compliance-carbon">
                 <div class="compliance-section" data-reveal>
                     <h2>Quality Standard & Global Compliance</h2>
@@ -635,7 +645,6 @@
                 </div>
             </section>
 
-            <!-- Registration Section changed to Contact Page Section -->
             <section id="daftar-carbon">
                 <div class="form-container" data-reveal style="text-align: center;">
                     <div style="margin-bottom: 30px;">
@@ -661,7 +670,6 @@
                 <p data-reveal style="margin-bottom: 32px;">
                     We serve as a specialized Carbon Securities & Research Agency, acting as the critical broker between nature-based solutions and the digital financial ecosystem. Our mission is to transform environmental stewardship into measurable economic sustainability.
                 </p>
-                <!-- Added executive quote for Carbon Market Division -->
                 <div data-reveal style="border-left: 4px solid var(--primary-accent); padding: 16px 24px; background: #F4F9FF; border-radius: 0 16px 16px 0; margin-top: 40px; font-style: italic;">
                     <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 500; margin-bottom: 8px; line-height: 1.5;">
                         "Our company will provide the best for the needs of our client."
@@ -677,24 +685,16 @@
         <main id="carbon-vision" class="tab-content">
             <section style="max-width: 800px;">
                 <h2 data-reveal style="font-size: 3rem; margin-bottom: 50px;">Vision & Mission</h2>
-                
                 <div data-reveal style="background: #F8FBFF; padding: 40px; border-radius: 30px; margin-bottom: 50px;">
                     <h3 style="color: var(--primary-accent); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">The Vision</h3>
                     <p style="font-size: 2rem; font-weight: 800; line-height: 1.2;">Building A Net Zero Emission Future</p>
                 </div>
-
                 <div data-reveal>
                     <h3 style="color: var(--primary-accent); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">The Mission</h3>
                     <ul style="list-style: none; margin-top: 20px;">
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;">
-                            <i class="ph ph-check" style="position: absolute; left: 0; color: var(--secondary-accent); font-weight: bold;"></i> Educate stakeholders about the Carbon Market
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;">
-                            <i class="ph ph-check" style="position: absolute; left: 0; color: var(--secondary-accent); font-weight: bold;"></i> Develop high-integrity Carbon Exchanges
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;">
-                            <i class="ph ph-check" style="position: absolute; left: 0; color: var(--secondary-accent); font-weight: bold;"></i> Serve as the trusted Broker for Carbon Securities
-                        </li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--secondary-accent); font-weight: bold;"></i> Educate stakeholders about the Carbon Market</li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--secondary-accent); font-weight: bold;"></i> Develop high-integrity Carbon Exchanges</li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--secondary-accent); font-weight: bold;"></i> Serve as the trusted Broker for Carbon Securities</li>
                     </ul>
                 </div>
             </section>
@@ -727,7 +727,6 @@
         <header class="site-header">
             <nav class="nav-container">
                 <a href="javascript:void(0)" class="logo-box" onclick="switchTab('intl', 'home')">
-                    <!-- Updated logo location structure -->
                     <img src="4.png" alt="Arsancia Aireru International Logo" class="logo-img">
                     <div class="logo-text-group">
                         <span class="logo-text-main intl-logo-text">Arsancia Aireru International</span>
@@ -790,49 +789,28 @@
 
             <section id="workflows-intl">
                 <div class="process-container">
-                    <!-- Sourcing Column -->
                     <div class="process-column" data-reveal>
                         <h2>Sourcing Process</h2>
                         <p>Fostering local producers to meet strict export standards</p>
                         <div class="stepper-v">
-                            <div class="step-v intl-step-v">
-                                <div class="step-v-num intl-step-v-num">01</div>
-                                <div class="step-v-content"><h4>Commodity Auditing</h4><p>Analyzing product grading, moisture levels, and chemical properties.</p></div>
-                            </div>
-                            <div class="step-v intl-step-v">
-                                <div class="step-v-num intl-step-v-num">02</div>
-                                <div class="step-v-content"><h4>Global Pricing Fit</h4><p>Aligning raw sourcing costs with major commodity indices (e.g., LME, Platts, CBOT).</p></div>
-                            </div>
-                            <div class="step-v intl-step-v">
-                                <div class="step-v-num intl-step-v-num">03</div>
-                                <div class="step-v-content"><h4>Trade Contracting</h4><p>Drafting strict mutual sales-purchase agreements (SPA) using secure frameworks.</p></div>
-                            </div>
+                            <div class="step-v intl-step-v"><div class="step-v-num intl-step-v-num">01</div><div class="step-v-content"><h4>Commodity Auditing</h4><p>Analyzing product grading, moisture levels, and chemical properties.</p></div></div>
+                            <div class="step-v intl-step-v"><div class="step-v-num intl-step-v-num">02</div><div class="step-v-content"><h4>Global Pricing Fit</h4><p>Aligning raw sourcing costs with major commodity indices (e.g., LME, Platts, CBOT).</p></div></div>
+                            <div class="step-v intl-step-v"><div class="step-v-num intl-step-v-num">03</div><div class="step-v-content"><h4>Trade Contracting</h4><p>Drafting strict mutual sales-purchase agreements (SPA) using secure frameworks.</p></div></div>
                         </div>
                     </div>
 
-                    <!-- Supply Chain Column -->
                     <div class="process-column" data-reveal>
                         <h2>Global Distribution</h2>
                         <p>Executing zero-friction international logistics pathways</p>
                         <div class="stepper-v">
-                            <div class="step-v intl-step-v">
-                                <div class="step-v-num intl-step-v-num">04</div>
-                                <div class="step-v-content"><h4>Freight Logistics</h4><p>Securing bulk carriers, containers, and charter vessels under optimal FOB/CIF conditions.</p></div>
-                            </div>
-                            <div class="step-v intl-step-v">
-                                <div class="step-v-num intl-step-v-num">05</div>
-                                <div class="step-v-content"><h4>Customs Clearance</h4><p>Managing export declarations, licenses, and custom validations seamlessly.</p></div>
-                            </div>
-                            <div class="step-v intl-step-v">
-                                <div class="step-v-num intl-step-v-num">06</div>
-                                <div class="step-v-content"><h4>Financial Settlement</h4><p>Coordinating smooth payment clearance via Letter of Credit (L/C) or secure escrow.</p></div>
-                            </div>
+                            <div class="step-v intl-step-v"><div class="step-v-num intl-step-v-num">04</div><div class="step-v-content"><h4>Freight Logistics</h4><p>Securing bulk carriers, containers, and charter vessels under optimal FOB/CIF conditions.</p></div></div>
+                            <div class="step-v intl-step-v"><div class="step-v-num intl-step-v-num">05</div><div class="step-v-content"><h4>Customs Clearance</h4><p>Managing export declarations, licenses, and custom validations seamlessly.</p></div></div>
+                            <div class="step-v intl-step-v"><div class="step-v-num intl-step-v-num">06</div><div class="step-v-content"><h4>Financial Settlement</h4><p>Coordinating smooth payment clearance via Letter of Credit (L/C) or secure escrow.</p></div></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Quality Standard Section -->
             <section id="compliance-intl">
                 <div class="compliance-section intl-compliance-section" data-reveal>
                     <h2>Quality Standard & Global Compliance</h2>
@@ -840,7 +818,6 @@
                 </div>
             </section>
 
-            <!-- Registration Section changed to Contact Page Section -->
             <section id="daftar-intl">
                 <div class="form-container" data-reveal style="text-align: center;">
                     <div style="margin-bottom: 30px;">
@@ -866,7 +843,6 @@
                 <p data-reveal style="margin-bottom: 32px;">
                     As a specialized International Commodity Broker, we specialize in building highly resilient transactional frameworks for local suppliers to expand globally. We operate with specialized local wisdom paired with strict international commercial standards.
                 </p>
-                <!-- Added executive quote for International Trade Division -->
                 <div data-reveal style="border-left: 4px solid var(--intl-orange); padding: 16px 24px; background: #FFFDF5; border-radius: 0 16px 16px 0; margin-top: 40px; font-style: italic; border-color: var(--intl-orange);">
                     <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 500; line-height: 1.5;">
                         "Our company will bring your products to international markets with care."
@@ -879,24 +855,16 @@
         <main id="intl-vision" class="tab-content">
             <section style="max-width: 800px;">
                 <h2 data-reveal style="font-size: 3rem; margin-bottom: 50px;">Vision & Mission</h2>
-                
                 <div data-reveal style="background: #FFFDF5; padding: 40px; border-radius: 30px; margin-bottom: 50px; border: 1px solid #FFE082;">
                     <h3 style="color: var(--intl-orange); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">The Vision</h3>
                     <p style="font-size: 2rem; font-weight: 800; line-height: 1.2; color: #5D4037;">Empowering Local Supply Networks to Rule Global Commerce</p>
                 </div>
-
                 <div data-reveal>
                     <h3 style="color: var(--intl-orange); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">The Mission</h3>
                     <ul style="list-style: none; margin-top: 20px;">
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;">
-                            <i class="ph ph-check" style="position: absolute; left: 0; color: var(--intl-orange); font-weight: bold;"></i> Maximize transactional success for high-quality domestic commodities.
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;">
-                            <i class="ph ph-check" style="position: absolute; left: 0; color: var(--intl-orange); font-weight: bold;"></i> Minimize global trading compliance friction.
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;">
-                            <i class="ph ph-check" style="position: absolute; left: 0; color: var(--intl-orange); font-weight: bold;"></i> Establish absolute financial security in complex cross-border logistics.
-                        </li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--intl-orange); font-weight: bold;"></i> Maximize transactional success for high-quality domestic commodities.</li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--intl-orange); font-weight: bold;"></i> Minimize global trading compliance friction.</li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--intl-orange); font-weight: bold;"></i> Establish absolute financial security in complex cross-border logistics.</li>
                     </ul>
                 </div>
             </section>
@@ -923,6 +891,204 @@
     </div>
 
 
+    <!-- ========================================================================= -->
+    <!-- ARSANCIA AIRUO ASENSU LOGISTICS WORKSPACE -->
+    <!-- ========================================================================= -->
+    <div id="logistics-workspace">
+        <header class="site-header">
+            <nav class="nav-container">
+                <a href="javascript:void(0)" class="logo-box" onclick="switchTab('logistics', 'home')">
+                    <img src="airuo.png" alt="Arsancia Airuo Asensu Logistics Logo" class="logo-img">
+                    <div class="logo-text-group">
+                        <span class="logo-text-main logistics-logo-text">Arsancia Airuo Asensu Logistics</span>
+                        <span class="logo-text-sub">Logistics Forensic & Automation</span>
+                    </div>
+                </a>
+
+                <ul class="nav-menu logistics-theme-nav">
+                    <li><a onclick="switchTab('logistics', 'home')" id="nav-logistics-home">Home</a></li>
+                    <li><a onclick="switchTab('logistics', 'profile')" id="nav-logistics-profile">Profile</a></li>
+                    <li><a onclick="switchTab('logistics', 'vision')" id="nav-logistics-vision">Vision</a></li>
+                    <li>
+                        <button class="btn-switch" onclick="navigateToPortal()">
+                            <i class="ph ph-squares-four"></i> Change Division
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="menu-toggle logistics-toggle" onclick="toggleMobileMenu('logistics')">
+                    <i class="ph ph-list" id="toggleIcon-logistics"></i>
+                </div>
+
+                <div class="mobile-dropdown" id="mobileDropdown-logistics">
+                    <a onclick="switchTab('logistics', 'home'); toggleMobileMenu('logistics');">Home</a>
+                    <a onclick="switchTab('logistics', 'profile'); toggleMobileMenu('logistics');">Profile</a>
+                    <a onclick="switchTab('logistics', 'vision'); toggleMobileMenu('logistics');">Vision</a>
+                    <a onclick="navigateToPortal(); toggleMobileMenu('logistics');" style="color: var(--logistics-teal); font-weight: 800;">Switch Division</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- LOGISTICS HOME -->
+        <main id="logistics-home" class="tab-content">
+            <section class="hero logistics-hero">
+                <span class="eyebrow-logistics" data-reveal>Corporate Logistics Leakage Recovery & Supply Chain Financial Protection</span>
+                <h1 data-reveal>Compliance and Fairness for All</h1>
+                <p data-reveal style="max-width: 700px; margin: 0 auto 40px;">Protecting corporate financial liquidity from latent billing inaccuracies within the global supply chain network.</p>
+                <div data-reveal>
+                    <a href="#daftar-logistics" class="btn btn-logistics">Request Forensic Consultation <i class="ph ph-shield-check"></i></a>
+                </div>
+            </section>
+
+            <!-- Services & Solutions Section -->
+            <section id="services-logistics">
+                <div style="text-align: center; margin-bottom: 40px;" data-reveal>
+                    <h2>Our Core Solutions & Services</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card" data-reveal>
+                        <i class="ph ph-magnifying-glass" style="font-size: 2.5rem; color: var(--logistics-teal); margin-bottom: 20px; display: block;"></i>
+                        <h3>Logistics Forensic Audit (LFA)</h3>
+                        <p>We conduct deep cross-reconciliation document reviews on past shipping statements to claim legitimate refunds on error overcharges.</p>
+                    </div>
+                    <div class="service-card" data-reveal>
+                        <i class="ph ph-cpu" style="font-size: 2.5rem; color: var(--logistics-teal); margin-bottom: 20px; display: block;"></i>
+                        <h3>Automated Live Tracking (SaaS)</h3>
+                        <p>Real-time search engine integration validating live charge components instantly before final confirmation to secure cost avoidance.</p>
+                    </div>
+                    <div class="service-card" data-reveal>
+                        <i class="ph ph-scales" style="font-size: 2.5rem; color: var(--logistics-teal); margin-bottom: 20px; display: block;"></i>
+                        <h3>Dispute Resolution & Recovery</h3>
+                        <p>We handle the legal claims architecture, pursue credit notes from foreign maritime agencies, and secure formal Financial Reconciliation records.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Structural Leakage Framework Map -->
+            <section id="workflows-logistics">
+                <div class="process-container">
+                    <div class="process-column" data-reveal>
+                        <h2>The Systemic Problem</h2>
+                        <p>Why logistics billing requires comprehensive forensic examination</p>
+                        <div class="stepper-v">
+                            <div class="step-v logistics-step-v">
+                                <div class="step-v-num logistics-step-v-num">01</div>
+                                <div class="step-v-content"><h4>Holiday Surcharges</h4><p>Unilateral cargo penalties applied arbitrarily during terminal non-operational periods or public weekends.</p></div>
+                            </div>
+                            <div class="step-v logistics-step-v">
+                                <div class="step-v-num logistics-step-v-num">02</div>
+                                <div class="step-v-content"><h4>Volumetric Deviations</h4><p>Inaccuracies in structural dimensional measurements and calculation parameters of metric Chargeable Weights.</p></div>
+                            </div>
+                            <div class="step-v logistics-step-v">
+                                <div class="step-v-num logistics-step-v-num">03</div>
+                                <div class="step-v-content"><h4>Customs Delay Penalties</h4><p>Time lag errors arising from customs document evaluations (Jalur Merah) wrongly billed to the shipper.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-column" data-reveal>
+                        <h2>Risk-Free Protection Framework</h2>
+                        <p>Operating under our performance-guaranteed business model</p>
+                        <div class="stepper-v">
+                            <div class="step-v logistics-step-v">
+                                <div class="step-v-num logistics-step-v-num">01</div>
+                                <div class="step-v-content"><h4>Free Testing Stage</h4><p>Provide a baseline audit sample of 15 historical invoices with zero required investment upfront.</p></div>
+                            </div>
+                            <div class="step-v logistics-step-v">
+                                <div class="step-v-num logistics-step-v-num">02</div>
+                                <div class="step-v-content"><h4>Success Fee Optimization</h4><p>Remuneration is determined solely from a direct percentage of factual recovered capital returns.</p></div>
+                            </div>
+                            <div class="step-v logistics-step-v">
+                                <div class="step-v-num logistics-step-v-num">03</div>
+                                <div class="step-v-content"><h4>Absolute Zero Fee Safety</h4><p>If zero systemic calculation errors are identified within your framework, you owe nothing.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Compliance Standard Callout -->
+            <section id="compliance-logistics">
+                <div class="compliance-section logistics-compliance-section" data-reveal>
+                    <h2>The Risk-Free Business Model: "No Cure, No Pay"</h2>
+                    <p class="compliance-text">We hold the highest principles of objectivity and financial trust. With our <strong>100% Risk-Free Protection Scheme</strong>, your operational margins are strictly guarded against leaks while maintaining complete alignment with global trade law.</p>
+                </div>
+            </section>
+
+            <!-- Contact Point -->
+            <section id="daftar-logistics">
+                <div class="form-container" data-reveal style="text-align: center;">
+                    <div style="margin-bottom: 30px;">
+                        <h2>Connect with Our Forensic Logistics Desk</h2>
+                        <p style="margin-top: 10px; margin-bottom: 30px;">Request an introductory data compatibility check and secure your complimentary 15-invoice trial analysis loop.</p>
+                    </div>
+                    <a href="mailto:info@arsancia-aeru.co.id?subject=Logistics Forensic Audit Trial Evaluation Request" class="btn btn-logistics" style="padding: 20px 40px; font-size: 1.1rem; color: #fff; background: linear-gradient(135deg, var(--logistics-teal) 0%, var(--logistics-darkteal) 100%);">
+                        <i class="ph ph-envelope-open" style="font-size: 1.4rem;"></i>
+                        <span>Email info@arsancia-aeru.co.id</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- LOGISTICS PROFILE -->
+        <main id="logistics-profile" class="tab-content">
+            <section style="max-width: 800px;">
+                <h2 data-reveal style="font-size: 3rem; margin-bottom: 30px;">Company Profile</h2>
+                <div style="width: 60px; height: 6px; background: var(--gradient-logistics); margin-bottom: 40px; border-radius: 3px;" data-reveal></div>
+                <p data-reveal style="font-size: 1.2rem; color: var(--text-main); font-weight: 600; margin-bottom: 24px;">
+                    Arsancia Airuo Asensu Logistics is a specialized automation and logistics forensic audit division operating under the official stewardship of PT Arsancia Aeru Carbon.
+                </p>
+                <p data-reveal style="margin-bottom: 32px;">
+                    We operate directly within the intricate cross-sections of corporate civil law, custom governance, and advanced machine data automation. Our team serves as a tactical asset for financial directors and global logistics companies seeking to prevent latent cash erosion.
+                </p>
+                <div data-reveal style="border-left: 4px solid var(--logistics-teal); padding: 16px 24px; background: #F4FBF9; border-radius: 0 16px 16px 0; margin-top: 40px; font-style: italic;">
+                    <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 500; line-height: 1.5;">
+                        "Compliance and Fairness for All"
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- LOGISTICS VISION -->
+        <main id="logistics-vision" class="tab-content">
+            <section style="max-width: 800px;">
+                <h2 data-reveal style="font-size: 3rem; margin-bottom: 50px;">Vision & Mission</h2>
+                <div data-reveal style="background: #F4FBF9; padding: 40px; border-radius: 30px; margin-bottom: 50px; border: 1px solid #a3e4d7;">
+                    <h3 style="color: var(--logistics-teal); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">The Vision</h3>
+                    <p style="font-size: 2rem; font-weight: 800; line-height: 1.2; color: var(--logistics-darkteal);">Eliminating Capital Leaks Across Global Supply Lines</p>
+                </div>
+                <div data-reveal>
+                    <h3 style="color: var(--logistics-teal); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">The Mission</h3>
+                    <ul style="list-style: none; margin-top: 20px;">
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--logistics-teal); font-weight: bold;"></i> Systematically pinpointing billing discrepancies with absolute automated tracking precision.</li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--logistics-teal); font-weight: bold;"></i> Providing risk-free legal reconciliation methods for institutional buyers.</li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 600;"><i class="ph ph-check" style="position: absolute; left: 0; color: var(--logistics-teal); font-weight: bold;"></i> Ensuring fair auditing practices between shippers and maritime networks.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- LOGISTICS FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <div>
+                    <h4>Arsancia Airuo Asensu Logistics</h4>
+                    <p>Logistics Forensic & Automation Division</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">Operating division under PT Arsancia Aeru Carbon</p>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <a href="mailto:info@arsancia-aeru.co.id" class="contact-item logistics-contact"><i class="ph ph-envelope"></i> info@arsancia-aeru.co.id</a>
+                    <a href="tel:+6287771072692" class="contact-item logistics-contact"><i class="ph ph-phone"></i> +62 087771072692</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="font-size: 0.85rem; color: var(--text-muted);">&copy; 2026 Arsancia Airuo Asensu Logistics. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+
     <!-- Status Modal -->
     <div class="modal-overlay" id="statusModal">
         <div class="modal-box">
@@ -939,64 +1105,6 @@
         (function() {
             emailjs.init("YOUR_PUBLIC_KEY"); 
         })();
-
-        // Handle submissions for all forms
-        document.querySelectorAll('.leadForm').forEach(form => {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                
-                const divisionName = this.getAttribute('data-division');
-                const submitBtn = this.querySelector('.formSubmitBtn');
-                const btnText = submitBtn.querySelector('span');
-                const btnIcon = submitBtn.querySelector('i');
-
-                // Disable button and show spinner
-                submitBtn.disabled = true;
-                btnText.textContent = "Sending...";
-                btnIcon.className = "ph ph-circle-notch ph-spin";
-
-                const templateParams = {
-                    division: divisionName,
-                    user_name: this.querySelector('.inputName').value,
-                    user_email: this.querySelector('.inputEmail').value,
-                    user_phone: this.querySelector('.inputPhone').value,
-                    sector_or_product: this.querySelector('.sectorSelect').value,
-                    target_email: "info@arsancia-aeru.co.id",
-                    bcc_email: "finecbanin@gmail.com"
-                };
-
-                // Adjust modal theme based on division
-                const modalBtn = document.getElementById('modalDismissBtn');
-                if (divisionName === 'International Trade') {
-                    modalBtn.className = "btn btn-intl";
-                } else {
-                    modalBtn.className = "btn btn-carbon";
-                }
-
-                emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                    .then(function() {
-                        showModal(
-                            'Success!', 
-                            'Your request has been sent successfully to info@arsancia-aeru.co.id. Our team will contact you shortly via email or WhatsApp.', 
-                            'success'
-                        );
-                        form.reset();
-                    }, function(error) {
-                        // Demo fallback simulation sending to info@arsancia-aeru.co.id
-                        showModal(
-                            'Message Received', 
-                            'We have received your registration details. Your request has been queued for info@arsancia-aeru.co.id. Our experts will be in touch soon.', 
-                            'success'
-                        );
-                        form.reset();
-                    })
-                    .finally(() => {
-                        submitBtn.disabled = false;
-                        btnText.textContent = "Submit Request";
-                        btnIcon.className = "ph ph-paper-plane-tilt";
-                    });
-            });
-        });
 
         function showModal(title, msg, type) {
             const modal = document.getElementById('statusModal');
@@ -1025,25 +1133,32 @@
             });
         }, { threshold: 0.1 });
 
-        // Enter division from the gateway portal screen
+        // Enter workspace function expanded for the 3 distinct divisions
         function enterDivision(workspaceKey) {
             document.getElementById('portal-screen').style.display = 'none';
             
+            // Hide all potential workspaces initially
+            document.getElementById('carbon-workspace').style.display = 'none';
+            document.getElementById('intl-workspace').style.display = 'none';
+            document.getElementById('logistics-workspace').style.display = 'none';
+            
             if (workspaceKey === 'carbon') {
                 document.getElementById('carbon-workspace').style.display = 'block';
-                document.getElementById('intl-workspace').style.display = 'none';
                 switchTab('carbon', 'home');
             } else if (workspaceKey === 'intl') {
-                document.getElementById('carbon-workspace').style.display = 'none';
                 document.getElementById('intl-workspace').style.display = 'block';
                 switchTab('intl', 'home');
+            } else if (workspaceKey === 'logistics') {
+                document.getElementById('logistics-workspace').style.display = 'block';
+                switchTab('logistics', 'home');
             }
         }
 
-        // Back to portal screen
+        // Return to gateway selection menu
         function navigateToPortal() {
             document.getElementById('carbon-workspace').style.display = 'none';
             document.getElementById('intl-workspace').style.display = 'none';
+            document.getElementById('logistics-workspace').style.display = 'none';
             document.getElementById('portal-screen').style.display = 'flex';
             window.scrollTo(0, 0);
         }
